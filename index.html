@@ -11,6 +11,11 @@
     <style>
         @media print {
             .Add, .btn { display: none; }
+            .bod {
+            -webkit-print-color-adjust: exact; /* For Chrome */
+            print-color-adjust: exact; /* For Firefox */
+            background-color: red; /* Replace with your desired color */
+        }
         }
     </style>
 </head>
