@@ -11,6 +11,9 @@
     <style>
         @media print {
             .Add, .btn { display: none; }
+        input, select, textarea { border: none !important; background: none !important; box-shadow: none !important; } /* Hide borders and background */
+        table, th, td { border: none !important; }
+        .action { display: none; }
             
         }
     </style>
@@ -25,9 +28,21 @@
                     <i class="fa-solid fa-envelope"></i> <label for="email">7citrineinterior@gmail.com</label><br><br>
                     <i class="fa-solid fa-location-dot"></i> <label for="address">OPP.SHOBHA CARNATION H&M ROYAL LANE,<br> TALAB KONDWHA,PUNE-48</label>
                 </div>
-                <img src="WhatsApp Image 2024-09-16 at 10.45.53 PM.webp" alt="Company Image">
+                <img src="WhatsApp Image 2024-09-23 at 9.42.52 PM.jpeg" alt="Company Image">
             </div>
         </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    <select class="form-select" id="invoice-type">
+                        <option value="Estimate">Estimate</option>
+                        <option value="Invoice">Invoice</option>
+                    </select>
+                </h2>
+            </div>
+          
 
         <!-- Bill Details -->
         <div class="row mt-3">
@@ -48,54 +63,61 @@
         </div>
 
         <!-- Invoice Table -->
-        <div class="card">
-            <div class="card-header">
-                <h2>
-                    <select class="form-select" id="invoice-type">
-                        <option value="Estimate">Estimate</option>
-                        <option value="Invoice">Invoice</option>
-                    </select>
-                </h2>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">SR.NO</th>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Rate</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="Tbodyy">
-                        <tr id="Trow" class="d-none">
-                            <th scope="row">1</th>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="number" class="form-control" name="Quantity" min="0" onchange="Cal(this)"></td>
-                            <td><input type="number" class="form-control" name="Rate" min="0" onchange="Cal(this)"></td>
-                            <td><input type="number" class="form-control" name="Amount" readonly></td>
-                            <td><button type="button" class="btn btn-danger" onclick="btndel(this)">X</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+       
+
+            <!-- Invoice Table -->
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">SR.NO</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody id="Tbodyy">
+                <tr id="Trow" class="d-none">
+                    <th scope="row"> !</th>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="number" class="form-control" name="Quantity" min="0" onchange="Cal(this)"></td>
+                    <td><input type="number" class="form-control" name="Rate" min="0" onchange="Cal(this)"></td>
+                    <td><input type="number" class="form-control" name="Amount" readonly></td>
+                    <td><button type="button" class="btn btn-danger" onclick="btndel(this)">X</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Total, Advance, Balance -->
+        <div class="row">
+            <div class="col-md-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Total</span>
                     <input type="text" id="ftotal" class="form-control" readonly>
                 </div>
+            </div>
+            <div class="col-md-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Advance</span>
                     <input type="number" id="advance" class="form-control" value="0" onchange="GetBalance()">
                 </div>
+            </div>
+            <div class="col-md-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Balance</span>
                     <input type="text" id="balance" class="form-control" readonly>
                 </div>
-                <button class="btn btn-primary" onclick="btnadd()">Add Item</button>
-                <button class="btn btn-secondary" onclick="GetPrint()">Print</button>
             </div>
         </div>
+
+        <button class="btn btn-primary" onclick="btnadd()">Add Item</button>
+        <button class="btn btn-secondary" onclick="GetPrint()">Print</button>
+    </div>
+</div>
+
 
         <!-- Terms and Conditions -->
         <div class="mt">
