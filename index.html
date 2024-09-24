@@ -12,7 +12,7 @@
     <style>
         @media print {
             .bod, .backk, .CON {
-            color:  #cab22d;
+                color: #cab22d !important; /* Ensure text color is applied */
                 background-color: black !important;
                 -webkit-print-color-adjust: exact; /* For WebKit browsers */
                 print-color-adjust: exact; /* For other browsers */
@@ -28,10 +28,12 @@
             table, th, td { 
                 border: none !important; 
                 font-size: 25px; /* Adjust font size for table cells if needed */
+                color: #cab22d !important; /* Ensure table text color is applied */
             }
             .action { display: none; }
         }
         </style>
+        
         
 </head>
 <body>
