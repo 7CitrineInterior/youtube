@@ -18,22 +18,33 @@
             }
             /* Hide other elements that shouldn't be printed */
             .Add, .btn { display: none; }
-            input, select, textarea { 
+            
+            /* Specific adjustments for input fields in the table */
+            tbody input {
                 border: none !important; 
                 background: none !important; 
                 box-shadow: none !important; 
-                font-size: 22px; /* Adjust font size here */
+                font-size: 30px; /* Adjust font size here */
             }
-            table, th, td { 
+
+            th{
+               
                 border: none !important; 
-                font-size: 22px; /* Adjust font size for table cells */
+                font-size: 18px; 
             }
+            
+            table,  td { 
+                border: none !important; 
+                font-size: 25px; /* Adjust font size for table cells */
+            }
+            
             .action { display: none; }
             h2, h3, p { 
-                font-size: 21px; /* Adjust font size for headings and paragraphs */
+                font-size: 25px; /* Adjust font size for headings and paragraphs */
             }
         }
     </style>
+    
     
 </head>
 <body>
