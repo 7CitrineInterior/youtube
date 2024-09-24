@@ -10,15 +10,24 @@
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
     <style>
         @media print {
-            .bod {
-                background-color: black !important; /* Set background to black */
-            }
             .Add, .btn { display: none; }
             input, select, textarea { border: none !important; background: none !important; box-shadow: none !important; }
             table, th, td { border: none !important; }
             .action { display: none; }
+    
+            /* Set background color and text color for printing */
+            .backk {
+                background-color: black !important;
+                color: gold !important;
+            }
+    
+            /* Ensure all text within .backk is golden */
+            .backk * {
+                color: gold !important;
+            }
         }
     </style>
+    
 </head>
 <body>
     <div class="main">
