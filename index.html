@@ -18,23 +18,26 @@
             }
             /* Hide other elements that shouldn't be printed */
             .Add, .btn { display: none; }
-            
-            /* Specific adjustments for input fields in the table */
+    
+            /* Hide table borders */
+            table, th, td {
+                border: none !important; /* Ensure no borders are shown */
+            }
+    
+            /* Hide input borders */
             tbody input {
                 border: none !important; 
                 background: none !important; 
                 box-shadow: none !important; 
-                font-size: 30px; /* Adjust font size here */
+                font-size: 25px; /* Adjust font size here */
             }
-
-            th{
-               
-                border: none !important; 
-                font-size: 18px; 
+    
+            th {
+                background: none !important; 
+                font-size: 18px;
             }
             
-            table,  td { 
-                border: none !important; 
+            table {
                 font-size: 25px; /* Adjust font size for table cells */
             }
             
@@ -47,8 +50,7 @@
     
     
 </head>
-<body>
-    <div class="main">
+<body>    <div class="main">
         <div class="backk">
             <div class="bod">
                 <div class="CON">
