@@ -11,16 +11,12 @@
     <style>
         @media print {
             .bod {
-            background-color: black !important; /* Set background to black */
-        
-        }
-           
-
+                background-color: black !important; /* Set background to black */
+            }
             .Add, .btn { display: none; }
-        input, select, textarea { border: none !important; background: none !important; box-shadow: none !important; } /* Hide borders and background */
-        table, th, td { border: none !important; }
-        .action { display: none; }
-            
+            input, select, textarea { border: none !important; background: none !important; box-shadow: none !important; }
+            table, th, td { border: none !important; }
+            .action { display: none; }
         }
     </style>
 </head>
@@ -38,7 +34,6 @@
             </div>
         </div>
 
-
         <div class="card">
             <div class="card-header">
                 <h2>
@@ -48,153 +43,151 @@
                     </select>
                 </h2>
             </div>
-          
 
-        <!-- Bill Details -->
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <label for="bill">BILL NUMBER:</label>
-                <input type="text" placeholder="Please enter bill number..." required id="bill" class="form-control">
+            <!-- Bill Details -->
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="bill">BILL NUMBER:</label>
+                    <input type="text" placeholder="Please enter bill number..." required id="bill" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" class="form-control">
+                </div>
             </div>
-            <div class="col-md-6">
-                <label for="date">Date:</label>
-                <input type="date" id="date" class="form-control">
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-md-12">
-                <label for="csna">CUSTOMER NAME:</label>
-                <input type="text" placeholder="Name..." required id="csna" class="form-control">
-            </div>
-        </div>
-
-        <!-- Invoice Table -->
-       
 
             <!-- Invoice Table -->
-<div class="card">
-    <div class="card-body">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">SR.NO</th>
-                    <th scope="col">Item Name</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Rate</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody id="Tbodyy">
-                <tr id="Trow" class="d-none">
-                    <th scope="row"> !</th>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="number" class="form-control" name="Quantity" min="0" onchange="Cal(this)"></td>
-                    <td><input type="number" class="form-control" name="Rate" min="0" onchange="Cal(this)"></td>
-                    <td><input type="number" class="form-control" name="Amount" readonly></td>
-                    <td><button type="button" class="btn btn-danger" onclick="btndel(this)">X</button></td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <!-- Total, Advance, Balance -->
-        <div class="row">
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Total</span>
-                    <input type="text" id="ftotal" class="form-control" readonly>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">SR.NO</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Rate</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="Tbodyy">
+                            <tr id="Trow" class="d-none">
+                                <th scope="row"></th>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="number" class="form-control" name="Quantity" min="0" onchange="Cal(this)"></td>
+                                <td><input type="number" class="form-control" name="Rate" min="0" onchange="Cal(this)"></td>
+                                <td><input type="number" class="form-control" name="Amount" readonly></td>
+                                <td><button type="button" class="btn btn-danger" onclick="btndel(this)">X</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Total, Advance, Balance -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Total</span>
+                                <input type="text" id="ftotal" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Advance</span>
+                                <input type="number" id="advance" class="form-control" value="0" onchange="GetBalance()">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Balance</span>
+                                <input type="text" id="balance" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="btnadd()">Add Item</button>
+                    <button class="btn btn-secondary" onclick="GetPrint()">Print</button>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Advance</span>
-                    <input type="number" id="advance" class="form-control" value="0" onchange="GetBalance()">
-                </div>
+
+            <!-- Terms and Conditions -->
+            <div class="mt">
+                <h3>Terms & Conditions:</h3>
+                <p id="text">
+                    1. Advance payment of 50% should be paid as work is confirmed.<br>
+                    2. After receiving 50% advance payment in early daytime, material will be dispatched on the same day.<br>
+                    3. Balance payment should be paid as per demand for further work.<br>
+                    4. Estimated amount may vary as per actual work done.<br>
+                    5. Extra work will incur additional costs.<br>
+                    6. Final payment should be made on the day of work completion.<br>
+                    7. Rates may vary according to changes in material costs from the estimate date.
+                </p>
             </div>
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Balance</span>
-                    <input type="text" id="balance" class="form-control" readonly>
-                </div>
+            <div class="text">
+                <h3>Thank you for doing business with us</h3>
             </div>
-        </div>
+            <h3 id="text3">7 Citrine Interior</h3>
 
-        <button class="btn btn-primary" onclick="btnadd()">Add Item</button>
-        <button class="btn btn-secondary" onclick="GetPrint()">Print</button>
-    </div>
-</div>
-
-
-        <!-- Terms and Conditions -->
-        <div class="mt">
-            <h3>Terms & Conditions:</h3>
-            <p id="text">
-                1. Advance payment of 50% should be paid as work is confirmed.<br>
-                2. After receiving 50% advance payment in early daytime, material will be dispatched on the same day.<br>
-                3. Balance payment should be paid as per demand for further work.<br>
-                4. Estimated amount may vary as per actual work done.<br>
-                5. Extra work will incur additional costs.<br>
-                6. Final payment should be made on the day of work completion.<br>
-                7. Rates may vary according to changes in material costs from the estimate date.
-            </p>
-        </div>
-        <div class="text">
-            <h3>Thank you for doing business with us</h3>
-        </div>
-        <h3 id="text3">7 Citrine Interior</h3>
-
-        <script>
-            (function() {
-                function GetPrint() {
-                    window.print();
-                }
-
-                function btnadd() {
-                    var v = $("#Trow").clone().removeClass("d-none").appendTo("#Tbodyy");
-                    $(v).find("input").val('');
-                    GetTotal();
-                }
-
-                function btndel(v) {
-                    $(v).closest('tr').remove();
-                    GetTotal();
-                }
-
-                function Cal(v) {
-                    var index = $(v).closest('tr').index();
-                    var Quantity = parseFloat(document.getElementsByName("Quantity")[index].value) || 0;
-                    var Rate = parseFloat(document.getElementsByName("Rate")[index].value) || 0;
-                    var Amount = Quantity * Rate;
-                    document.getElementsByName("Amount")[index].value = Amount.toFixed(2);
-                    GetTotal();
-                }
-
-                function GetTotal() {
-                    var sum = 0;
-                    var Amounts = document.getElementsByName("Amount");
-                    for (let index = 0; index < Amounts.length; index++) {
-                        var Amount = parseFloat(Amounts[index].value) || 0;
-                        sum += Amount;
+            <script>
+                (function() {
+                    function GetPrint() {
+                        window.print();
                     }
-                    document.getElementById("ftotal").value = sum.toFixed(2);
-                    GetBalance(); // Update balance when total changes
-                }
-
-                function GetBalance() {
-                    var total = parseFloat(document.getElementById("ftotal").value) || 0;
-                    var advance = parseFloat(document.getElementById("advance").value) || 0;
-                    var balance = total - advance;
-                    document.getElementById("balance").value = balance.toFixed(2);
-                }
-
-                // Expose functions globally
-                window.GetPrint = GetPrint;
-                window.btnadd = btnadd;
-                window.btndel = btndel;
-                window.Cal = Cal;
-                window.GetBalance = GetBalance;
-            })();
-        </script>
+            
+                    function btnadd() {
+                        var v = $("#Trow").clone().removeClass("d-none").appendTo("#Tbodyy");
+                        $(v).find("input").val(''); // Clear input values
+                        updateSerialNumbers(); // Update serial numbers for all rows
+                        GetTotal(); // Recalculate total
+                    }
+            
+                    function btndel(v) {
+                        $(v).closest('tr').remove();
+                        GetTotal();
+                        updateSerialNumbers(); // Update serial numbers after deletion
+                    }
+            
+                    function updateSerialNumbers() {
+                        $('#Tbodyy tr').each(function(index) {
+                            $(this).find('th').first().text(index + 1); // Serial number starts from 1
+                        });
+                    }
+            
+                    function Cal(v) {
+                        var index = $(v).closest('tr').index();
+                        var Quantity = parseFloat(document.getElementsByName("Quantity")[index].value) || 0;
+                        var Rate = parseFloat(document.getElementsByName("Rate")[index].value) || 0;
+                        var Amount = Quantity * Rate;
+                        document.getElementsByName("Amount")[index].value = Amount.toFixed(2);
+                        GetTotal();
+                    }
+            
+                    function GetTotal() {
+                        var sum = 0;
+                        var Amounts = document.getElementsByName("Amount");
+                        for (let index = 0; index < Amounts.length; index++) {
+                            var Amount = parseFloat(Amounts[index].value) || 0;
+                            sum += Amount;
+                        }
+                        document.getElementById("ftotal").value = sum.toFixed(2);
+                        GetBalance(); // Update balance when total changes
+                    }
+            
+                    function GetBalance() {
+                        var total = parseFloat(document.getElementById("ftotal").value) || 0;
+                        var advance = parseFloat(document.getElementById("advance").value) || 0;
+                        var balance = total - advance;
+                        document.getElementById("balance").value = balance.toFixed(2);
+                    }
+            
+                    // Expose functions globally
+                    window.GetPrint = GetPrint;
+                    window.btnadd = btnadd;
+                    window.btndel = btndel;
+                    window.Cal = Cal;
+                    window.GetBalance = GetBalance;
+                })();
+            </script>
+        </div>
     </div>
 </body>
 </html>
